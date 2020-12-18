@@ -18,3 +18,4 @@ your-path\Vue.js-sample\CLient>npm install sqlite3
 your-path\Vue.js-sample\CLient>npm install sequelize
 3)then start your client (run "npx yarn serve")
 your-path\Vue.js-sample\CLient>npx yarn serve
+
