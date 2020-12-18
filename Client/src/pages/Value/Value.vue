@@ -209,13 +209,13 @@ export default {
       set_editedNo:"Valuevue/set_editedNo"
     }),
     editItem(item) {
-      this.editedIndex = item._id;
+      this.editedIndex = item.id;
       this.set_editedNo(item);
       this.editedItem = Object.assign({}, item);
       this.dialog = true;
     },
     deleteItem(item) {
-      this.editedIndex = item._id;
+      this.editedIndex = item.id;
       this.set_editedNo(item);
       this.dialogDelete = true;
     },
