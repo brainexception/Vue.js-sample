@@ -1,5 +1,5 @@
 let Principle = require('../models/Principle.model');
-
+const { v4: uuidv4 } = require('uuid');
 
 exports.deletePrinciple = async(req, res) => {
     let id = req.params.id;
@@ -19,7 +19,7 @@ exports.deletePrinciple = async(req, res) => {
 }
 
 exports.updatePrinciple =async(req, res) => {
-    let id = req.params.id;
+    let id = req.body.id;
     
     if (!id) {
         res.status(500).send('No Selected');
@@ -31,9 +31,9 @@ exports.updatePrinciple =async(req, res) => {
         return;
     }
 
-    await Principle.update({ Name: req.body.Name,CreatedDate: req.body.CreatedDate }, {
+    await Principle.update({ name: req.body.name }, {
         where: {
-            _id: id
+            id: id
         }
       });
               res.send("success");
@@ -52,6 +52,7 @@ exports.getPrinciple = async(req, res) => {
 exports.createPrinciple = function (req, res) {
     
     let _principleObj = new Principle(req.body)
+    _principleObj.id = uuidv4();
     _principleObj.save(function(err, _principle) {
         if (err) {
             res.status(500).send(err);

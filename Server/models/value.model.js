@@ -4,33 +4,28 @@ const sequelize = new Sequelize('sqlite::memory:');
 const { v4: uuidv4 } = require('uuid');
 
 class Value extends Model {}
-Value.init({
-  _id: DataTypes.STRING,
-  Name: DataTypes.STRING,
-  CreatedDate: DataTypes.DATE
+Value.init({  
+  id: { type: DataTypes.STRING, primaryKey: true },
+  name: DataTypes.STRING,
 }, { sequelize, modelName: 'value' });
 
 (async () => {
   await sequelize.sync();
   const val1 = await Value.create({
-    _id: uuidv4(),
-    Name: 'Individuals and interactions',
-    CreatedDate: new Date(1980, 6, 20)
+    id: uuidv4(),
+    name: 'Individuals and interactions',
   });
   const val2 = await Value.create({
-    _id: uuidv4(),
-    Name: 'Working software',
-    CreatedDate: new Date(1980, 6, 20)
+    id: uuidv4(),
+    name: 'Working software',
   });
   const val3 = await Value.create({
-    _id: uuidv4(),
-    Name: 'Customer collaboration',
-    CreatedDate: new Date(1980, 6, 20)
+    id: uuidv4(),
+    name: 'Customer collaboration',
   });
   const val4 = await Value.create({
-    _id: uuidv4(),
-    Name: 'Responding to change',
-    CreatedDate: new Date(1980, 6, 20)
+    id: uuidv4(),
+    name: 'Responding to change',
   });
   
 })();

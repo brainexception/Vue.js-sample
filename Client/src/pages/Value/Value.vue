@@ -76,23 +76,16 @@
                         <v-row>
                         <v-col cols="12" sm="6" md="4">
                             <v-text-field
-                              v-model="editedItem.Name"
-                              label="Name"
-                              ref="Name"
-                              :rules="[() => !!editedItem.Name || 'Please enter the value.']"
+                              v-model="editedItem.name"
+                              label="name"
+                              ref="name"
+                              :rules="[() => !!editedItem.name || 'Please enter the value.']"
                               required
                               :error-messages="errorMessages"
                             ></v-text-field>
                           </v-col>
 <v-col cols="12" sm="6" md="4">
-                            <v-text-field
-                              v-model="editedItem.CreatedDate"
-                              label="CreatedDate"
-                              ref="CreatedDate"
-                              :rules="[() => !!editedItem.CreatedDate || 'Please enter the value.']"
-                              required
-                              :error-messages="errorMessages"
-                            ></v-text-field>
+                           
                           </v-col>
 
 </v-row>
@@ -153,29 +146,20 @@ export default {
       headers: [
         { text: "", value: "data-table-expand" },
         {
-          text: "Name",
+          text: "name",
           align: "start",
           sortable: false,
-          value: "Name"
-        },
-{
-          text: "CreatedDate",
-          align: "start",
-          sortable: false,
-          value: "CreatedDate"
+          value: "name"
         },
 
         { text: "Actions", value: "actions", sortable: false, class: "row_action" }
       ],
       editedIndex: -1,
       editedItem: {
-        Name: "",
-CreatedDate:  new Date().toISOString().substr(0, 10),
-
+        name: "",
       },
       defaultItem: {
-       Name: "",
-CreatedDate:  new Date().toISOString().substr(0, 10),
+       name: "",
 
       }
     };
@@ -271,11 +255,8 @@ CreatedDate:  new Date().toISOString().substr(0, 10),
     resetForm() {
       this.errorMessages = [];
       this.formHasErrors = false;
-      if(this.$refs["Name"]){
-      this.$refs["Name"].reset();
-    }
-if(this.$refs["CreatedDate"]){
-      this.$refs["CreatedDate"].reset();
+      if(this.$refs["name"]){
+      this.$refs["name"].reset();
     }
 
       
